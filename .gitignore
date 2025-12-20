@@ -1,6 +1,5 @@
 # Config files
 *.config
-config/
 .env
 .env.local
 .env.*.local
