@@ -1,0 +1,72 @@
+This technical interview is a one-hour discussion with a Senior Data Engineer and is designed to assess your practical, hands-on experience in building and managing modern, large-scale data platforms.
+
+The focus is on how you apply core engineering principles to solve real-world data challenges
+
+🎯 What We're Looking For
+We want to understand your thought process and your ability to design robust solutions. Be prepared to discuss the trade-offs of your design choices (e.g., cost, complexity, latency).
+
+The interview is divided into four main technical domains:
+
+Domain
+
+Core Focus
+
+Assessment Goal
+
+1. Cloud Data Architecture & Modeling
+
+Designing data lakes/lakehouses, migration strategies, and choosing appropriate cloud services (Compute, Storage, Catalog).
+
+Your ability to build scalable, reliable, and future-proof data platforms.
+
+2. Data Processing & Performance Tuning
+
+Working with distributed computing (e.g., Apache Spark), diagnosing slow pipelines, and optimizing performance.
+
+Your practical knowledge of pipeline efficiency and troubleshooting skills.
+
+3. Data Governance, Security, & Access
+
+Securing sensitive data (PII), implementing access controls (RBAC/ABAC), and ensuring enterprise compliance.
+
+Your understanding of security standards in a cloud environment.
+
+4. Practical SQL & Analytical Querying
+
+Writing complex SQL queries to solve business problems, often involving advanced functions.
+
+Your proficiency in data manipulation and analytical logic.
+
+🚀 How to Prepare Effectively
+For each domain, review the core concepts and be ready to articulate your decision-making process.
+
+Domain
+
+Key Preparation Topics
+
+Sample Practice Question
+
+Architecture
+
+Cloud Services: S3/ADLS, compute options, cataloging. Patterns: Data Lake vs. Lakehouse. Concepts: Batch/Streaming ingestion, data formats (Parquet, AVRO).
+
+Practice: "Design an architecture for a new real-time fraud detection system that consumes event data from millions of users."
+
+Performance
+
+Spark: Shuffles, partitioning, caching, wide vs. narrow transformations. Troubleshooting: Identifying skew, small files, resource bottlenecks in the Spark UI.
+
+Practice: "Your daily ETL job failed due to a cluster overload. Describe your systematic approach to troubleshooting the failure and preventing recurrence."
+
+Security
+
+PII Handling: Encryption, tokenization, hashing, masking. Access Control: IAM, RBAC/ABAC, table/column-level security in the cloud.
+
+Practice: "How would you ensure only the HR team can see unmasked salary data, while other teams can only see aggregated metrics?"
+
+SQL
+
+Advanced Functions: Window functions (ROW_NUMBER(), RANK()), CTEs, complex joins, and analytical aggregations (e.g., calculating percentages/ratios).
+
+Practice: "Write a query to find the top 3 highest-spending customers for each region last month."
+

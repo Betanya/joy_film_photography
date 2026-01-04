@@ -1,0 +1,67 @@
+# Databricks CLI Commands for Setting up Google Calendar Secrets
+
+# 1. Install Databricks CLI (if not already installed)
+pip install databricks-cli
+
+# 2. Configure Databricks CLI with your workspace
+databricks configure --token
+# You'll be prompted for:
+# - Databricks Host: https://your-workspace.cloud.databricks.com
+# - Token: Your personal access token from Databricks
+
+# 3. Create the 'google' secret scope
+databricks secrets create-scope --scope google
+
+# 4. Store the service account JSON
+# Option A: From a file
+databricks secrets put --scope google --key calendar_service_account --string-value "$(cat path/to/service-account.json)"
+
+# Option B: From clipboard or inline (PowerShell)
+$serviceAccountJson = Get-Content "path/to/service-account.json" -Raw
+databricks secrets put --scope google --key calendar_service_account --string-value $serviceAccountJson
+
+# 5. (Optional) Store user email for domain-wide delegation
+databricks secrets put --scope google --key calendar_user_email --string-value "your.email@yourdomain.com"
+
+# 6. Verify secrets are stored
+databricks secrets list --scope google
+
+# 7. (Optional) View a secret (will be redacted)
+databricks secrets get --scope google --key calendar_service_account
+
+
+# === ALTERNATIVE: Using Python in Databricks Notebook ===
+
+# Run this code in a Databricks notebook cell:
+
+"""
+# Create secret scope
+try:
+    dbutils.secrets.createScope(scope="google")
+    print("✓ Created 'google' secret scope")
+except:
+    print("Scope may already exist or you need admin permissions")
+
+# Store service account JSON
+service_account_json = '''
+{
+  "type": "service_account",
+  "project_id": "your-project-id",
+  "private_key_id": "your-key-id",
+  "private_key": "-----BEGIN PRIVATE KEY-----\\nYOUR_PRIVATE_KEY\\n-----END PRIVATE KEY-----\\n",
+  "client_email": "your-service-account@your-project.iam.gserviceaccount.com",
+  "client_id": "your-client-id",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "your-cert-url"
+}
+'''
+
+dbutils.secrets.put(scope="google", key="calendar_service_account", string_value=service_account_json)
+print("✓ Stored calendar_service_account")
+
+# Optional: Store user email
+dbutils.secrets.put(scope="google", key="calendar_user_email", string_value="your.email@domain.com")
+print("✓ Stored calendar_user_email")
+"""
