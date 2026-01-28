@@ -2,7 +2,7 @@
 
 This plan is optimized for one day of focused prep, aligned to the four domains: Cloud Data Architecture & Modeling, Data Processing & Performance Tuning, Data Governance/Security, and Practical SQL.
 
----
+--- 
 
 ## One‑Day Schedule (8–10 hours)
 
